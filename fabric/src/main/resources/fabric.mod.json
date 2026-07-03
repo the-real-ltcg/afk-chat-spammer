@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Periodically sends a configurable chat message on an interval you control, so you don't get kicked for being AFK. Configure via /afkspam or the Mod Menu config screen.",
+  "authors": ["the-real-ltcg"],
+  "contact": {},
+  "license": "${mod_license}",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.ltcg.afkchatspammer.fabric.AfkChatSpammerFabric"],
+    "modmenu": ["com.ltcg.afkchatspammer.fabric.AfkChatSpammerModMenu"]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": ">=${minecraft_version}"
+  }
+}
