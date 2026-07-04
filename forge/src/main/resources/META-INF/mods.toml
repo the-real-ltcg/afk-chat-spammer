@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="*"
+license="${mod_license}"
+clientSideOnly=true
+
+[[mods]]
+modId="${mod_id}"
+version="${version}"
+displayName="${mod_name}"
+description='''
+Periodically sends a configurable chat message on an interval you control, so your friends know
+you're AFK. Configure via /afkspam or the mod's config screen (Mods > Config).
+'''
+authors="the-real-ltcg"
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="[1,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="CLIENT"

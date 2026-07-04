@@ -1,0 +1,73 @@
+plugins {
+	id 'java'
+	id 'net.minecraftforge.gradle' version "${forgegradle_version}"
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = "${project.archives_base_name}-forge-26.1"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+minecraft {
+	runs {
+		configureEach {
+			workingDir = layout.projectDirectory.dir('run')
+		}
+
+		register('client')
+	}
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir rootProject.file("common/src/main/java")
+			srcDir rootProject.file("forge/src/main/java")
+		}
+		resources {
+			srcDir rootProject.file("forge/src/main/resources")
+		}
+	}
+}
+
+repositories {
+	minecraft.mavenizer(it)
+	maven fg.forgeMaven
+	maven fg.minecraftLibsMaven
+	mavenCentral()
+	maven { url "https://maven.shedaniel.me/" }
+}
+
+dependencies {
+	implementation minecraft.dependency("net.minecraftforge:forge:${project.mc261_minecraft_version}-${project.mc261_forge_version}")
+	annotationProcessor "net.minecraftforge:eventbus-validator:${project.eventbus_validator_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "mod_id", project.mod_id
+	inputs.property "mod_name", project.mod_name
+	inputs.property "mod_license", project.mod_license
+	inputs.property "minecraft_version_range", project.mc261_minecraft_version_range
+
+	filesMatching("META-INF/mods.toml") {
+		expand(
+			"version": inputs.properties.version,
+			"mod_id": inputs.properties.mod_id,
+			"mod_name": inputs.properties.mod_name,
+			"mod_license": inputs.properties.mod_license,
+			"minecraft_version_range": inputs.properties.minecraft_version_range
+		)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+	it.options.release = 25
+}
