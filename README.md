@@ -1,7 +1,7 @@
 # AFK Chat Spammer
 
 A client-only Minecraft mod (Fabric + NeoForge, Minecraft 26.2) that periodically sends a
-configurable chat message, so you don't get kicked for being AFK.
+configurable chat message, so your friends know you're AFK instead of ignoring them.
 
 ## Features
 
