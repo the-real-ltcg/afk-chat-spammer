@@ -6,7 +6,7 @@ version = project.mod_version
 group = project.maven_group
 
 base {
-	archivesName = "${project.archives_base_name}-fabric"
+	archivesName = "${project.archives_base_name}-fabric-26.2"
 }
 
 repositories {
@@ -26,20 +26,24 @@ sourceSets {
 	main {
 		java {
 			srcDir rootProject.file("common/src/main/java")
+			srcDir rootProject.file("fabric/src/main/java")
+		}
+		resources {
+			srcDir rootProject.file("fabric/src/main/resources")
 		}
 	}
 }
 
 dependencies {
 	// New (non-remapping) Loom for 26.x, so mod deps use standard configurations, not modImplementation.
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	minecraft "com.mojang:minecraft:${project.mc262_minecraft_version}"
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.mc262_fabric_version}"
 
-	api("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+	api("me.shedaniel.cloth:cloth-config-fabric:${project.mc262_cloth_config_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	api "com.terraformersmc:modmenu:${project.modmenu_version}"
+	api "com.terraformersmc:modmenu:${project.mc262_modmenu_version}"
 }
 
 processResources {
@@ -48,7 +52,7 @@ processResources {
 	inputs.property "mod_name", project.mod_name
 	inputs.property "mod_license", project.mod_license
 	inputs.property "loader_version", project.loader_version
-	inputs.property "minecraft_version", project.minecraft_version
+	inputs.property "minecraft_version", project.mc262_minecraft_version
 
 	filesMatching("fabric.mod.json") {
 		expand(

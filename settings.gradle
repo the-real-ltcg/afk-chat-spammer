@@ -15,5 +15,7 @@ pluginManagement {
 
 rootProject.name = 'afk-chat-spammer'
 
-include 'fabric'
-include 'neoforge'
+include 'fabric-26.2'
+include 'fabric-26.1'
+include 'neoforge-26.2'
+include 'neoforge-26.1'

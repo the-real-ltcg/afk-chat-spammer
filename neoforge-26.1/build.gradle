@@ -6,7 +6,7 @@ version = project.mod_version
 group = project.maven_group
 
 base {
-	archivesName = "${project.archives_base_name}-neoforge"
+	archivesName = "${project.archives_base_name}-neoforge-26.1"
 }
 
 repositories {
@@ -14,7 +14,7 @@ repositories {
 }
 
 neoForge {
-	version = project.neoforge_version
+	version = project.mc261_neoforge_version
 
 	runs {
 		client {
@@ -33,12 +33,16 @@ sourceSets {
 	main {
 		java {
 			srcDir rootProject.file("common/src/main/java")
+			srcDir rootProject.file("neoforge/src/main/java")
+		}
+		resources {
+			srcDir rootProject.file("neoforge/src/main/resources")
 		}
 	}
 }
 
 dependencies {
-	implementation "me.shedaniel.cloth:cloth-config-neoforge:${project.cloth_config_version}"
+	implementation "me.shedaniel.cloth:cloth-config-neoforge:${project.mc261_cloth_config_version}"
 }
 
 processResources {
@@ -46,8 +50,8 @@ processResources {
 	inputs.property "mod_id", project.mod_id
 	inputs.property "mod_name", project.mod_name
 	inputs.property "mod_license", project.mod_license
-	inputs.property "minecraft_version_range", project.minecraft_version_range
-	inputs.property "neoforge_version", project.neoforge_version
+	inputs.property "minecraft_version_range", project.mc261_minecraft_version_range
+	inputs.property "neoforge_version_range", "[26.1,26.2)"
 
 	filesMatching("META-INF/neoforge.mods.toml") {
 		expand(
@@ -56,7 +60,7 @@ processResources {
 			"mod_name": inputs.properties.mod_name,
 			"mod_license": inputs.properties.mod_license,
 			"minecraft_version_range": inputs.properties.minecraft_version_range,
-			"neoforge_version": inputs.properties.neoforge_version
+			"neoforge_version_range": inputs.properties.neoforge_version_range
 		)
 	}
 }

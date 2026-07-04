@@ -5,15 +5,15 @@ modId="${mod_id}"
 version="${version}"
 displayName="${mod_name}"
 description='''
-Periodically sends a configurable chat message on an interval you control, so you don't get
-kicked for being AFK. Configure via /afkspam or the mod's config screen (Mods > Config).
+Periodically sends a configurable chat message on an interval you control, so your friends know
+you're AFK. Configure via /afkspam or the mod's config screen (Mods > Config).
 '''
 authors="the-real-ltcg"
 
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"
-    versionRange="[26.2,)"
+    versionRange="${neoforge_version_range}"
     ordering="NONE"
     side="CLIENT"
 
