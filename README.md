@@ -7,7 +7,8 @@ configurable chat message, so you don't get kicked for being AFK.
 
 - Sends your message on a configurable interval (seconds).
 - Configure via the `/afkspam` command or an in-game config screen.
-- Works on Fabric and NeoForge. Also runs fine on Quilt (Quilt loads standard Fabric mods).
+- Works on Fabric and NeoForge. Quilt is not currently supported: as of this release, Quilt Loader
+  and Quilted Fabric API have no build for Minecraft 26.2 yet, independent of this mod.
 
 ## Commands
 
@@ -18,7 +19,7 @@ configurable chat message, so you don't get kicked for being AFK.
 
 ## Config screen
 
-- **Fabric / Quilt**: install [Mod Menu](https://modrinth.com/mod/modmenu) and open it from the
+- **Fabric**: install [Mod Menu](https://modrinth.com/mod/modmenu) and open it from the
   Mods screen.
 - **NeoForge**: open the Mods screen, select AFK Chat Spammer, click **Config**.
 
